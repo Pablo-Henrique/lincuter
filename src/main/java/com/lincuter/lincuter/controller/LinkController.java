@@ -3,6 +3,7 @@ package com.lincuter.lincuter.controller;
 import com.lincuter.lincuter.dto.LinkRequestDTO;
 import com.lincuter.lincuter.dto.LinkResponseDTO;
 import com.lincuter.lincuter.service.LinkService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class LinkController {
     private LinkService linkService;
 
     @PostMapping
-    public ResponseEntity<LinkResponseDTO> createShortLink(@RequestBody LinkRequestDTO url) {
+    public ResponseEntity<LinkResponseDTO> createShortLink(@RequestBody @Valid LinkRequestDTO url) {
         LinkResponseDTO response = linkService.shortenUrl(url);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

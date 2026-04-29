@@ -1,4 +1,9 @@
 package com.lincuter.lincuter.dto;
 
-public record LinkRequestDTO(String original_url) {
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
+public record LinkRequestDTO(@URL
+                             @NotBlank(message = "URL não deve estár vazia.")
+                             String original_url) {
 }
