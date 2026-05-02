@@ -7,10 +7,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/shorten")
@@ -23,5 +22,12 @@ public class LinkController {
     public ResponseEntity<LinkResponseDTO> createShortLink(@RequestBody @Valid LinkRequestDTO url) {
         LinkResponseDTO response = linkService.shortenUrl(url);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/{short_code}")
+    public ResponseEntity<Void> getShortLink(@PathVariable String short_code) {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create(linkService.getShortUrlRedirect(short_code)))
+                .build();
     }
 }

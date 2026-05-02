@@ -1,15 +1,13 @@
 package com.lincuter.lincuter.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 import java.io.Serial;
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity(name = "TB_LINK")
-public class Link {
+public class Link implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 3629607082460736645L;
@@ -19,35 +17,35 @@ public class Link {
     private Long id;
 
     @Column(nullable = false)
-    private String original_url;
+    private String originalUrl;
 
     @Column
-    private String short_code;
+    private String shortCode;
 
     @Column
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
-    public String getOriginal_url() {
-        return original_url;
+    public String getOriginalUrl() {
+        return originalUrl;
     }
 
-    public void setOriginal_url(String original_url) {
-        this.original_url = original_url;
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
     }
 
-    public String getShort_code() {
-        return short_code;
+    public String getShortCode() {
+        return shortCode;
     }
 
-    public void setShort_code(String short_code) {
-        this.short_code = short_code;
+    public void setShortCode(String shortCode) {
+        this.shortCode = shortCode;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

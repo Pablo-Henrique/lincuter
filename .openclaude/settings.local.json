@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew --version)",
+      "Bash(./gradlew build:*)",
+      "Bash(./gradlew compileJava)",
+      "Bash(./gradlew test:*)",
+      "Bash(./gradlew bootRun)",
+      "Bash(pg_isready)",
+      "Bash(psql:*)",
+      "Bash(./gradlew bootRun --stacktrace)"
+    ]
+  }
+}
